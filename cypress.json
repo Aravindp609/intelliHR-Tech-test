@@ -1,0 +1,11 @@
+{
+	"baseUrl": "https://qa-tech-test-demo.intellihr.net",
+	"screenshotsFolder": "cypress/results/screenshots",
+	"viewportWidth": 1280,
+	"viewportHeight": 720,
+	"requestTimeout": 30000,
+	"defaultCommandTimeout": 20000,
+	"chromeWebSecurity": false,
+	"downloadFolder": "cypress/results/downloads",
+	"video": false
+}

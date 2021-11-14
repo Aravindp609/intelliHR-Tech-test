@@ -1,0 +1,12 @@
+{
+	"devDependencies": {
+		"cypress": "^9.0.0"
+	},
+	"scripts": {
+		"test-intelliHR": "cypress run --headless",
+		"test-intelliHR-open": "cypress open"
+	},
+	"dependencies": {
+		"dayjs": "^1.10.7"
+	}
+}
