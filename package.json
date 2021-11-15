@@ -1,10 +1,11 @@
 {
 	"devDependencies": {
-		"cypress": "^9.0.0"
+		"cypress": "^9.0.0",
+		"cypress-iframe": "^1.0.1"
 	},
 	"scripts": {
 		"test-intelliHR": "cypress run --headless",
-		"test-intelliHR-open": "cypress open"
+		"test-intelliHR-open": "yarn cypress open"
 	},
 	"dependencies": {
 		"dayjs": "^1.10.7"

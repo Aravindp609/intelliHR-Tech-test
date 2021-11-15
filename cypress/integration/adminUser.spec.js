@@ -16,7 +16,8 @@ describe('Admin user visits People page', () => {
 			.should('contain', 'Job')
 			.should('be.visible')
 			.click();
-		cy.contains('Reassign Direct Reports').should('be.visible');
+		cy.scrollTo('bottom');
+		cy.contains('Reporting').should('be.visible');
 
 		// Thomas Mason is shown under 'Direct Reports'
 		cy.contains('Thomas Mason').should('be.visible');
@@ -36,13 +37,10 @@ describe('Admin user visits People page', () => {
 		cy.contains('All People').click();
 		//cy.screenshot();
 
-
 		//csv file has been downloaded
 		const path = require("path");
 		const formattedDate = dayjs().format('Do YYYYMMMMHHmmss');
 		const downloadedFile = "people-export-qa_tech_test_demo-" + formattedDate
-
-
 		it('Verify the downloaded file', () => {
 			const downloadsFolder = Cypress.config("downloadsFolder");
 			cy.readFile(path.join(downloadsFolder, downloadedFile)).should("exist");

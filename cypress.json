@@ -7,5 +7,6 @@
 	"defaultCommandTimeout": 20000,
 	"chromeWebSecurity": false,
 	"downloadFolder": "cypress/results/downloads",
+	"retries": 3,
 	"video": false
 }
