@@ -22,7 +22,7 @@ describe('Authenticated user visits loging page', () => {
 	})
 
 	// User Story #5
-	it('Admin user should login and update Profile page successfully', () => {
+	it.only('Admin user should login and update Profile page successfully', () => {
 		cy.clearCookies();
 		cy.clearLocalStorage();
 		cy.adminUserLogin();
@@ -31,6 +31,7 @@ describe('Authenticated user visits loging page', () => {
 		cy.get('#filterControllerSearchInput').type('Lyanna')
 		cy.get('[data-component-context="total-person-count"]').should('contain', '1 person');
 		cy.get('[data-component-type="avatar_tile"]').click();
+		cy.wait(2000);
 
 		// scroll down to 'Email Address' section
 		cy.get('[data-component-context="email-address-annotated-section"]').scrollIntoView().should('contain', 'Email Address').should('be.visible')
@@ -52,26 +53,22 @@ describe('Authenticated user visits loging page', () => {
 		cy.contains('Edit').click();
 
 		// selecting 'Work Email Address' radio button
-		//cy.get('input[value="work"]').should('be.visible').should('contain', 'Work Email Address').check({ force: true });
-		cy.get('input[value="work"]').should('be.visible').click()
-
+		cy.contains('Work Email Address').click();
 
 		// check the 'Primary Email Address' checkbox		
-		// cy.get('[type="checkbox"]').should('contain', 'Primary Email Address').click();
-		cy.get('[type="checkbox"]').should('contain', 'Primary Email Address').check({ force: true });
+		cy.get('.checkbox').should('contain', 'Primary Email Address').click();
 
 		// press the Save button
 		cy.contains('Save').click();
 
 		cy.get('h2').should('contain', 'Personal Information');
 
-		// index 2 shows that position of 'demo@intellihr.com' is on the 2nd row
-		cy.get('[data-component-context="email-address-smart-list-column-emails"]').eq(2).should('contain', 'demo@intellihr.com');
-		cy.get('[data-component-context="email-address-demo@intellihr.com-pill-personal"]').should('contain', 'Personal');
+		// I used first() shows that position of 'demo@intellihr.com.au' is on the 1st row
+		cy.get('[data-component-context="email-address-smart-list"]').first().should('contain', 'demo@intellihr.com.au');
+		cy.get('[data-component-context="email-address-demo@intellihr.com.au-pill-primary"]').should('contain', 'Primary');
+		cy.get('[data-component-context="email-address-demo@intellihr.com.au-pill-work"]').should('contain', 'Work');
 
-		// index 1 shows that position of 'demo@intellihr.com.au' is on the 1st row
-		cy.get('[data-component-context="email-address-smart-list-column-emails"]').eq(1).should('contain', 'demo@intellihr.com.au');
-		cy.get('[data-component-context="email-address-demo@intellihr.com.au-pill-personal"]').should('contain', 'Personal');
-		cy.get('[data-component-context="email-address-demo@intellihr.com-pill-primary"]').should('contain', 'Work');
+		cy.get('[data-component-context="email-address-smart-list"]').should('contain', 'demo@intellihr.com');
+		cy.get('[data-component-context="email-address-demo@intellihr.com-pill-personal"]').should('contain', 'Personal');
 	})
 })

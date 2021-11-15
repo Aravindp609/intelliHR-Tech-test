@@ -18,6 +18,6 @@ Cypress.Commands.add("authenticate", (userType) => {
 
 Cypress.Commands.add("adminUserLogin", () => {
 	cy.visit('/auth/login');
-	cy.authenticate('Normal');
+	cy.authenticate('Admin');
 	cy.contains('People').click();
 })

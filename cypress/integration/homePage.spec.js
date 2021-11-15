@@ -9,7 +9,7 @@ describe('Anonymous user visits home page', () => {
 		cy.get('#header-logo').should('be.visible')
 	})
 
-	// User Story #2 - Easy
+	// User Story #2
 	it('user navigates to login page', () => {
 		cy.visit('/spa/settings')
 		cy.url().should('contain', 'auth/login')
