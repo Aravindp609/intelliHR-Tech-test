@@ -52,19 +52,18 @@ describe('Authenticated user visits loging page', () => {
 		cy.contains('Edit').click();
 
 		// selecting 'Work Email Address' radio button
-		//cy.get('#isPersonal-1').click();
-		cy.get('._2xw2sJMAT1EzBL-EHcRC-L').eq(1).should('contain', 'Work Email Address').check({ force: true });
-		//cy.get('._2xw2sJMAT1EzBL-EHcRC-L').eq(1).should('contain', 'Work Email Address').click();
+		//cy.get('input[value="work"]').should('be.visible').should('contain', 'Work Email Address').check({ force: true });
+		cy.get('input[value="work"]').should('be.visible').click()
 
-		// check the 'Primary Email Address' checkbox
-		//cy.get('.checkbox-input _3vPRDHD-cGqHEcZMXNLC8B').check();
-		//cy.get('.checkbox').should('contain', 'Primary Email Address').click();
-		cy.get('.checkbox').should('contain', 'Primary Email Address').check({ force: true });
+
+		// check the 'Primary Email Address' checkbox		
+		// cy.get('[type="checkbox"]').should('contain', 'Primary Email Address').click();
+		cy.get('[type="checkbox"]').should('contain', 'Primary Email Address').check({ force: true });
 
 		// press the Save button
 		cy.contains('Save').click();
 
-		cy.get('h1').should('contain', 'Personal Information');
+		cy.get('h2').should('contain', 'Personal Information');
 
 		// index 2 shows that position of 'demo@intellihr.com' is on the 2nd row
 		cy.get('[data-component-context="email-address-smart-list-column-emails"]').eq(2).should('contain', 'demo@intellihr.com');
