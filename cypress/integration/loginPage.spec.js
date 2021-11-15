@@ -22,7 +22,7 @@ describe('Authenticated user visits loging page', () => {
 	})
 
 	// User Story #5
-	it.only('Admin user should login and update Profile page successfully', () => {
+	it('Admin user should login and update Profile page successfully', () => {
 		cy.clearCookies();
 		cy.clearLocalStorage();
 		cy.adminUserLogin();
@@ -31,7 +31,6 @@ describe('Authenticated user visits loging page', () => {
 		cy.get('#filterControllerSearchInput').type('Lyanna')
 		cy.get('[data-component-context="total-person-count"]').should('contain', '1 person');
 		cy.get('[data-component-type="avatar_tile"]').click();
-		cy.wait(2000);
 
 		// scroll down to 'Email Address' section
 		cy.get('[data-component-context="email-address-annotated-section"]').scrollIntoView().should('contain', 'Email Address').should('be.visible')
